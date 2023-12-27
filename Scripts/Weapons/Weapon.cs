@@ -30,6 +30,10 @@ public class Weapon : MonoBehaviour {
             TimeToShoot = Time.time + _TimeBetweenShots;
 
             GameObject bullet = Instantiate(BulletPrefab, firePoint.position, firePoint.rotation);
+            Bullet bulletScript = bullet.GetComponent<Bullet>();
+            bulletScript.Damage = bulletDamage;
+            bulletScript.lifespan = bulletLifespan;
+
             bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.right * bulletSpeed, ForceMode2D.Impulse);
         }
     }

@@ -344,7 +344,7 @@ MonoBehaviour:
   bulletSpeed: 10
   bulletLifespan: 1
   TimeBetweenShots: 0.2
-  BulletPrefab: {fileID: 294298101}
+  BulletPrefab: {fileID: 4257405256607872184, guid: 7b328e89923bce753aac4cceae856aa2, type: 3}
   firePoint: {fileID: 256973297}
 --- !u!1 &519420028
 GameObject:
