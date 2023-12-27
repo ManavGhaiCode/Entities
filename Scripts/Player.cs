@@ -20,5 +20,11 @@ public class Player : MonoBehaviour {
         Force *= speed * Time.fixedDeltaTime;
 
         rb.MovePosition(rb.position + Force);
+
+        Vector2 MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 LookDir = (Vector2)transform.position - MousePos;
+
+        float angle = Mathf.Atan2(LookDir.y, LookDir.x) * Mathf.Rad2Deg + 90f;
+        rb.rotation = angle;
     }
 }

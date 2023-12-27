@@ -34,7 +34,7 @@ public class Weapon : MonoBehaviour {
             bulletScript.Damage = bulletDamage;
             bulletScript.lifespan = bulletLifespan;
 
-            bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.right * bulletSpeed, ForceMode2D.Impulse);
+            bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
         }
     }
 }
