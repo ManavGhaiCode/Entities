@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
     public float speed = 5f;
+    public Transform WeaponPosition;
 
     private Rigidbody2D rb;
     private Vector2 MoveInput;
@@ -26,5 +27,10 @@ public class Player : MonoBehaviour {
 
         float angle = Mathf.Atan2(LookDir.y, LookDir.x) * Mathf.Rad2Deg + 90f;
         rb.rotation = angle;
+    }
+
+    public void TakeWeapon(GameObject WeaponRef) {
+        Transform Weapon = Instantiate(WeaponRef, WeaponPosition.position, transform.rotation).GetComponent<Transform>();
+        Weapon.SetParent(transform);
     }
 }
