@@ -7,12 +7,15 @@ public class Player : MonoBehaviour {
     public Transform WeaponPosition;
 
     private Rigidbody2D rb;
+    private Animator anim;
     private Vector2 MoveInput;
 
     private int Health = 100;
 
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+
         Health = _Health;
     }
 
@@ -22,10 +25,16 @@ public class Player : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        Vector2 Force = MoveInput.normalized;
-        Force *= speed * Time.fixedDeltaTime;
+        if (MoveInput != Vector2.zero) {
+            anim.SetBool("isWalking", true);
 
-        rb.MovePosition(rb.position + Force);
+            Vector2 Force = MoveInput.normalized;
+            Force *= speed * Time.fixedDeltaTime;
+
+            rb.MovePosition(rb.position + Force);
+        } else {
+            anim.SetBool("isWalking", false);
+        }
 
         Vector2 MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 LookDir = (Vector2)transform.position - MousePos;
