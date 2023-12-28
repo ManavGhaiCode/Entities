@@ -17,7 +17,7 @@ public class Bullet : MonoBehaviour {
             enemy.TakeDamage(Damage);
         }
 
-        Destroy(gameObject);
+        Die();
     }
 
     private void Die() {
