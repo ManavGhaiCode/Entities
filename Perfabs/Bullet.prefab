@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 0
   lifespan: 0
+  ParticleEffect: {fileID: 617455068839058322, guid: 1c42c70b136d3dd6a8086c57ca336a1b, type: 3}
 --- !u!50 &7946988582374679143
 Rigidbody2D:
   serializedVersion: 4

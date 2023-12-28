@@ -4,8 +4,10 @@ public class Bullet : MonoBehaviour {
     public int Damage;
     public float lifespan;
 
+    public GameObject ParticleEffect;
+
     private void Start() {
-        Destroy(gameObject, lifespan);
+        Invoke("Die", lifespan);
     }
 
     private void OnTriggerEnter2D(Collider2D hitInfo) {
@@ -15,6 +17,11 @@ public class Bullet : MonoBehaviour {
             enemy.TakeDamage(Damage);
         }
 
+        Destroy(gameObject);
+    }
+
+    private void Die() {
+        Instantiate(ParticleEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }
