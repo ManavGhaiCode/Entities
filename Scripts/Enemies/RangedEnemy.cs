@@ -19,7 +19,7 @@ public class RangedEnemy : Enemy {
         if (player == null) { return; }
 
         Vector2 LookDir = transform.position - player.position;
-        float angle = Mathf.Atan2(LookDir.y, LookDir.x);
+        float angle = Mathf.Atan2(LookDir.y, LookDir.x) * Mathf.Rad2Deg + 90;
 
         rb.rotation = angle;
 
