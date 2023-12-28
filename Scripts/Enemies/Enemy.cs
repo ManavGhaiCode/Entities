@@ -4,9 +4,13 @@ public class Enemy : MonoBehaviour {
     public Transform player;
     public int Health;
 
+    public int Damage = 10;
     public Rigidbody2D rb;
 
-    private void Start() {
+    public float speed = 5f;
+
+    public void Start() {
+        player = GameObject.FindWithTag("Player").GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
     }
 

@@ -1,14 +1,19 @@
 using UnityEngine;
 
 public class Player : MonoBehaviour {
+    public int _Health = 100;
+
     public float speed = 5f;
     public Transform WeaponPosition;
 
     private Rigidbody2D rb;
     private Vector2 MoveInput;
 
+    private int Health = 100;
+
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
+        Health = _Health;
     }
 
     private void Update() {
@@ -32,5 +37,13 @@ public class Player : MonoBehaviour {
     public void TakeWeapon(GameObject WeaponRef) {
         Transform Weapon = Instantiate(WeaponRef, WeaponPosition.position, transform.rotation).GetComponent<Transform>();
         Weapon.SetParent(transform);
+    }
+
+    public void TakeDamage(int Damage) {
+        Health -= Damage;
+
+        if (Health <= 0) {
+            Destroy(gameObject);
+        }
     }
 }
