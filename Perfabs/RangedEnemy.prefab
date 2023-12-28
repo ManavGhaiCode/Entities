@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3462983045748489137}
   - component: {fileID: 3301471577556048404}
   - component: {fileID: 3416570219868498604}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RangedEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,9 +188,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5348856420912547628}
     m_Modifications:
+    - target: {fileID: 559147121948712077, guid: affddd05f1d1473c9b436ab3b660dee4, type: 3}
+      propertyPath: bulletSpeed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1268878125464223275, guid: affddd05f1d1473c9b436ab3b660dee4, type: 3}
       propertyPath: m_Name
       value: Gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 1268878125464223275, guid: affddd05f1d1473c9b436ab3b660dee4, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2065928595163802788, guid: affddd05f1d1473c9b436ab3b660dee4, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7908159824324003834, guid: affddd05f1d1473c9b436ab3b660dee4, type: 3}
       propertyPath: m_LocalPosition.x

@@ -10,6 +10,8 @@ public class Player : MonoBehaviour {
     private Animator anim;
     private Vector2 MoveInput;
 
+    private bool CanTakeDamage = true;
+
     private int Health = 100;
 
     private void Start() {
@@ -25,17 +27,11 @@ public class Player : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        if (MoveInput != Vector2.zero) {
-            anim.SetBool("isWalking", true);
+        Vector2 Force = MoveInput.normalized;
+        Force *= speed * Time.fixedDeltaTime;
 
-            Vector2 Force = MoveInput.normalized;
-            Force *= speed * Time.fixedDeltaTime;
-
-            rb.MovePosition(rb.position + Force);
-        } else {
-            anim.SetBool("isWalking", false);
-        }
-
+        rb.MovePosition(rb.position + Force);
+ 
         Vector2 MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 LookDir = (Vector2)transform.position - MousePos;
 
@@ -49,6 +45,8 @@ public class Player : MonoBehaviour {
     }
 
     public void TakeDamage(int Damage) {
+        if (!CanTakeDamage) return;
+
         Health -= Damage;
 
         if (Health <= 0) {

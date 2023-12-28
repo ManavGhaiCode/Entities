@@ -8,7 +8,7 @@ public class EnemyGun : MonoBehaviour {
     public Transform FirePoint;
     public int Damage;
 
-    public void Shoot() {
+    public virtual void Shoot() {
         GameObject bullet = Instantiate(bulletPerfab, FirePoint.position, FirePoint.rotation);
         EnemyBullet bulletScript = bullet.GetComponent<EnemyBullet>();
         bulletScript.Damage = Damage;
