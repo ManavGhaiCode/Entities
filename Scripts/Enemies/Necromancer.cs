@@ -19,7 +19,8 @@ public class Necromancer : Enemy {
 
     private void FixedUpdate() {
         if (TimeToSummon <= Time.time) {
-            Summon();
+            Invoke("Summon", 1.8f);
+            anim.SetTrigger("Summoning");
             TimeToSummon = Time.time + TimeBetweenSummons;
 
             return;
