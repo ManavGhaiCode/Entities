@@ -1,15 +1,12 @@
 using UnityEngine;
 
 public class Necromancer : Enemy {
-    public GameObject[] SummonEnemies;
-    public GameObject bulletPerfab;
+    public GameObject SummonEnemy;
     public Transform SummonPoint;
 
     public float TimeBetweenSummons = 2f;
-    public float TimeBetweenShoots = 5f;
 
     private Vector2 Target;
-
     private float TimeToSummon;
     
     private void Start() {
@@ -28,8 +25,6 @@ public class Necromancer : Enemy {
             return;
         }
 
-        // if ()
-
         rb.MovePosition(Vector2.MoveTowards(transform.position, Target, speed * Time.fixedDeltaTime));
 
         if (Vector2.Distance(transform.position, Target) < 0.5f) {
@@ -39,7 +34,6 @@ public class Necromancer : Enemy {
     }
 
     private void Summon() {
-        GameObject summonObject = SummonEnemies[Random.Range(0, SummonEnemies.Length)];
-        Instantiate(summonObject, SummonPoint.position, SummonPoint.rotation);
+        Instantiate(SummonEnemy, SummonPoint.position, SummonPoint.rotation);
     }
 }

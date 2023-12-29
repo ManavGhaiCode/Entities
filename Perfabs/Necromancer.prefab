@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6323200964427620980}
   m_Layer: 0
   m_Name: Necromancer
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,14 +104,10 @@ MonoBehaviour:
   Health: 70
   Damage: 10
   rb: {fileID: 0}
-  speed: 4
-  SummonEnemies:
-  - {fileID: 920777053393971744, guid: e0b1b6da47b3b35b683500ba17e84b34, type: 3}
-  - {fileID: 2139529326822334691, guid: 28c2e53e03bbeff2092315d5d35ed145, type: 3}
-  bulletPerfab: {fileID: 0}
+  speed: 3
+  SummonEnemy: {fileID: 3923615194416170709, guid: 3376267e715ef1581905cd110649ea25, type: 3}
   SummonPoint: {fileID: 2481699168722344966}
-  TimeBetweenSummons: 2
-  TimeBetweenShoots: 5
+  TimeBetweenSummons: 7
 --- !u!50 &2869547959623977596
 Rigidbody2D:
   serializedVersion: 4
