@@ -11,8 +11,9 @@ public class Player : MonoBehaviour {
     private Vector2 MoveInput;
 
     private bool CanTakeDamage = true;
-
     private int Health = 100;
+
+    private GameObject player;
 
     private void Start() {
         rb = GetComponent<Rigidbody2D>();

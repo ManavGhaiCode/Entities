@@ -9,16 +9,17 @@ public class Weapon : MonoBehaviour {
     public Transform firePoint;
 
     private float _TimeBetweenShots = .2f;
-    private float TimeToShoot;
-    private bool isShooting = false;
+    private bool isShooting;
 
-    private GameObject Player;
+    private float TimeToShoot;
+
+    private GameObject player;
 
     private void Start() {
         _TimeBetweenShots = TimeBetweenShots;
         TimeToShoot = Time.time + _TimeBetweenShots;
 
-        Player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update() {
@@ -34,7 +35,11 @@ public class Weapon : MonoBehaviour {
             bulletScript.Damage = bulletDamage;
             bulletScript.lifespan = bulletLifespan;
 
+            player.GetComponent<Animator>().SetBool("Shooting", true);
+
             bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
+        } else {
+            player.GetComponent<Animator>().SetBool("Shooting", false);
         }
     }
 }
