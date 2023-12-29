@@ -11,6 +11,10 @@ public class EnemyBullet : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D hitInfo) {
+        if (hitInfo.CompareTag("EnemyBullet") || hitInfo.CompareTag("Enemy")) {
+            return;
+        }
+
         Player player = hitInfo.GetComponent<Player>();
         
         if (player != null) {
