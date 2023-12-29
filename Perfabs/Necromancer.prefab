@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1051264507750735869}
   - component: {fileID: 2869547959623977596}
   - component: {fileID: 6323200964427620980}
+  - component: {fileID: 2277521315104797148}
   m_Layer: 0
   m_Name: Necromancer
   m_TagString: Enemy
@@ -182,6 +183,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &2277521315104797148
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930058415480608176}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7f9652095e3a383f885f06f86ca8febd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2898498307690908199
 GameObject:
   m_ObjectHideFlags: 0
