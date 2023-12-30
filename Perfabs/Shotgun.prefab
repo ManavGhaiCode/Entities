@@ -107,7 +107,7 @@ MonoBehaviour:
   bulletDamage: 3
   bulletSpeed: 8
   bulletLifespan: 0.8
-  TimeBetweenShots: 0.4
+  TimeBetweenShots: 0.8
   BulletPrefab: {fileID: 4257405256607872184, guid: 7b328e89923bce753aac4cceae856aa2, type: 3}
   firePoint: {fileID: 3441648518115725484}
   FirePoints:
