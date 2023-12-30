@@ -38,7 +38,7 @@ public class Weapon : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        if (isShooting && Time.time >= TimeToShoot && playerScript.Ammo > 0) {
+        if (isShooting && Time.time >= TimeToShoot && playerScript.GetAmmo() > 0) {
             TimeToShoot = Time.time + _TimeBetweenShots;
 
             Shoot();
