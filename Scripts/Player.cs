@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
@@ -10,6 +11,10 @@ public class Player : MonoBehaviour {
     private Animator anim;
     private Vector2 MoveInput;
 
+    private GameObject[] Guns;
+    private GameObject CurrentWeapon;
+    private int WeaponIndex;
+
     private bool CanTakeDamage = true;
     private int Health = 100;
 
@@ -18,11 +23,26 @@ public class Player : MonoBehaviour {
         anim = GetComponent<Animator>();
 
         Health = _Health;
+        Guns = new GameObject[0];
+        WeaponIndex = -1;
     }
 
     private void Update() {
         MoveInput.x = Input.GetAxisRaw("Horizontal");
         MoveInput.y = Input.GetAxisRaw("Vertical");
+
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            WeaponIndex += 1;
+
+            if (WeaponIndex == Guns.Length) {
+                WeaponIndex = 0;
+            }
+
+            Debug.Log(WeaponIndex);
+            Debug.Log(Guns.Length);
+
+            SetWeapon(WeaponIndex);
+        }
     }
 
     private void FixedUpdate() {
@@ -38,9 +58,25 @@ public class Player : MonoBehaviour {
         rb.rotation = angle;
     }
 
+    private void SetWeapon(int Index) {
+        GameObject Weapon = Instantiate(Guns[Index], WeaponPosition.position, transform.rotation);
+        Weapon.GetComponent<Transform>().SetParent(transform);
+
+        if (CurrentWeapon != null) {
+            Destroy(CurrentWeapon);
+        }
+
+        CurrentWeapon = Weapon;
+    }
+
     public void TakeWeapon(GameObject WeaponRef) {
-        Transform Weapon = Instantiate(WeaponRef, WeaponPosition.position, transform.rotation).GetComponent<Transform>();
-        Weapon.SetParent(transform);
+        Array.Resize<GameObject>(ref Guns, Guns.Length + 1);
+
+        Guns[Guns.Length - 1] = WeaponRef;
+
+        if (CurrentWeapon == null) {
+            SetWeapon(Guns.Length - 1);
+        }
     }
 
     public void TakeDamage(int Damage) {
