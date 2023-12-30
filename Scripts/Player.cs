@@ -4,6 +4,7 @@ using UnityEngine;
 public class Player : MonoBehaviour {
     public int _Health = 100;
 
+    public int Ammo = 30;
     public float speed = 5f;
     public Transform WeaponPosition;
 
@@ -17,6 +18,7 @@ public class Player : MonoBehaviour {
 
     private bool CanTakeDamage = true;
     private int Health = 100;
+
 
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
@@ -37,9 +39,6 @@ public class Player : MonoBehaviour {
             if (WeaponIndex == Guns.Length) {
                 WeaponIndex = 0;
             }
-
-            Debug.Log(WeaponIndex);
-            Debug.Log(Guns.Length);
 
             SetWeapon(WeaponIndex);
         }
@@ -77,6 +76,14 @@ public class Player : MonoBehaviour {
         if (CurrentWeapon == null) {
             SetWeapon(Guns.Length - 1);
         }
+    }
+
+    public void UseAmmo() {
+        Ammo -= 1;
+    }
+
+    public void TakeAmmo(int Amount) {
+        Ammo += Amount;
     }
 
     public void TakeDamage(int Damage) {

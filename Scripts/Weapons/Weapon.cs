@@ -18,6 +18,7 @@ public class Weapon : MonoBehaviour {
     private float TimeToShoot;
 
     private GameObject player;
+    private Player playerScript;
 
     private float RandomRange(float minimum, float maximum) {
         System.Random rand = new System.Random();
@@ -29,6 +30,7 @@ public class Weapon : MonoBehaviour {
         TimeToShoot = Time.time + _TimeBetweenShots;
 
         player = GameObject.FindGameObjectWithTag("Player");
+        playerScript = player.GetComponent<Player>();
     }
 
     private void Update() {
@@ -36,10 +38,11 @@ public class Weapon : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        if (isShooting && Time.time >= TimeToShoot) {
+        if (isShooting && Time.time >= TimeToShoot && playerScript.Ammo > 0) {
             TimeToShoot = Time.time + _TimeBetweenShots;
 
             Shoot();
+            playerScript.UseAmmo();
             player.GetComponent<Animator>().SetBool("Shooting", true);
 
         } else {
@@ -51,8 +54,8 @@ public class Weapon : MonoBehaviour {
         Vector2 Offset = Vector2.zero;
 
         if (IsInaccurate) {
-            Offset.x = (float)RandomRange(-1, 1);
-            Offset.y = (float)RandomRange(-1, 1);
+            Offset.x = RandomRange(-1, 1);
+            Offset.y = RandomRange(-1, 1);
         }
 
         GameObject bullet = Instantiate(BulletPrefab, firePoint.position, firePoint.rotation);
