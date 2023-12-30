@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour {
@@ -8,12 +9,19 @@ public class Weapon : MonoBehaviour {
     public GameObject BulletPrefab;
     public Transform firePoint;
 
+    public bool IsInaccurate = false;
+
     private float _TimeBetweenShots = .2f;
     private bool isShooting;
 
     private float TimeToShoot;
 
     private GameObject player;
+
+    private float RandomRange(float minimum, float maximum) {
+        System.Random rand = new System.Random();
+        return (float)(rand.NextDouble() * (maximum - minimum) + minimum);
+    }
 
     private void Start() {
         _TimeBetweenShots = TimeBetweenShots;
@@ -39,11 +47,20 @@ public class Weapon : MonoBehaviour {
     }
 
     public virtual void Shoot() {
+        Vector2 Offset = Vector2.zero;
+
+        if (IsInaccurate) {
+            Offset.x = (float)RandomRange(-1, 1);
+            Offset.y = (float)RandomRange(-1, 1);
+        }
+
         GameObject bullet = Instantiate(BulletPrefab, firePoint.position, firePoint.rotation);
         Bullet bulletScript = bullet.GetComponent<Bullet>();
         bulletScript.Damage = bulletDamage;
         bulletScript.lifespan = bulletLifespan;
 
-        bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
+        Vector2 Up = (Vector2)firePoint.up + (Offset.normalized * 0.1f);
+
+        bullet.GetComponent<Rigidbody2D>().AddForce(Up * bulletSpeed, ForceMode2D.Impulse);
     }
 }

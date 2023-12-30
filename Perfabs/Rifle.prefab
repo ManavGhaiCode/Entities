@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1427385247921513419}
   - component: {fileID: 8898659768441162235}
+  - component: {fileID: 1012587747257561809}
   m_Layer: 0
   m_Name: Rifle
   m_TagString: Untagged
@@ -85,6 +86,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1012587747257561809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360165812554730553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aa527eb1b4e252c68f5dec6b46e237d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletDamage: 1
+  bulletSpeed: 12.5
+  bulletLifespan: 0.7
+  TimeBetweenShots: 0.1
+  BulletPrefab: {fileID: 4257405256607872184, guid: 7b328e89923bce753aac4cceae856aa2, type: 3}
+  firePoint: {fileID: 2242622473123321416}
+  IsInaccurate: 1
 --- !u!1 &7016654886804012397
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,7 +114,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2242622473123321416}
-  - component: {fileID: 252584078807303081}
   m_Layer: 0
   m_Name: FirePoint
   m_TagString: Untagged
@@ -117,21 +136,3 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1427385247921513419}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &252584078807303081
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7016654886804012397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2aa527eb1b4e252c68f5dec6b46e237d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletDamage: 1
-  bulletSpeed: 12.5
-  bulletLifespan: 1
-  TimeBetweenShots: 0.1
-  BulletPrefab: {fileID: 4257405256607872184, guid: 7b328e89923bce753aac4cceae856aa2, type: 3}
-  firePoint: {fileID: 2242622473123321416}
