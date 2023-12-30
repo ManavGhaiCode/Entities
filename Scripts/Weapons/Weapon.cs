@@ -30,16 +30,20 @@ public class Weapon : MonoBehaviour {
         if (isShooting && Time.time >= TimeToShoot) {
             TimeToShoot = Time.time + _TimeBetweenShots;
 
-            GameObject bullet = Instantiate(BulletPrefab, firePoint.position, firePoint.rotation);
-            Bullet bulletScript = bullet.GetComponent<Bullet>();
-            bulletScript.Damage = bulletDamage;
-            bulletScript.lifespan = bulletLifespan;
-
+            Shoot();
             player.GetComponent<Animator>().SetBool("Shooting", true);
 
-            bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
         } else {
             player.GetComponent<Animator>().SetBool("Shooting", false);
         }
+    }
+
+    public virtual void Shoot() {
+        GameObject bullet = Instantiate(BulletPrefab, firePoint.position, firePoint.rotation);
+        Bullet bulletScript = bullet.GetComponent<Bullet>();
+        bulletScript.Damage = bulletDamage;
+        bulletScript.lifespan = bulletLifespan;
+
+        bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
     }
 }
