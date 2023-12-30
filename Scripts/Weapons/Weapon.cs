@@ -10,6 +10,7 @@ public class Weapon : MonoBehaviour {
     public Transform firePoint;
 
     public bool IsInaccurate = false;
+    public float Inaccuracy = 0;
 
     private float _TimeBetweenShots = .2f;
     private bool isShooting;
@@ -59,7 +60,7 @@ public class Weapon : MonoBehaviour {
         bulletScript.Damage = bulletDamage;
         bulletScript.lifespan = bulletLifespan;
 
-        Vector2 Up = (Vector2)firePoint.up + (Offset.normalized * 0.1f);
+        Vector2 Up = (Vector2)firePoint.up + (Offset.normalized * Inaccuracy);
 
         bullet.GetComponent<Rigidbody2D>().AddForce(Up * bulletSpeed, ForceMode2D.Impulse);
     }

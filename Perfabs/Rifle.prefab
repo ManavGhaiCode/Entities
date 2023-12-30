@@ -105,6 +105,7 @@ MonoBehaviour:
   BulletPrefab: {fileID: 4257405256607872184, guid: 7b328e89923bce753aac4cceae856aa2, type: 3}
   firePoint: {fileID: 2242622473123321416}
   IsInaccurate: 1
+  Inaccuracy: 0.125
 --- !u!1 &7016654886804012397
 GameObject:
   m_ObjectHideFlags: 0
