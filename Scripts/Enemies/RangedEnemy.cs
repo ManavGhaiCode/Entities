@@ -31,6 +31,7 @@ public class RangedEnemy : Enemy {
 
             if (TimeToShoot <= Time.time) {
                 Gun.Shoot();
+                anim.SetTrigger("Attacking");
                 TimeToShoot = Time.time + TimeBetweenAttacks;
             }
         }

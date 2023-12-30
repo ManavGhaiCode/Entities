@@ -54,4 +54,8 @@ public class Player : MonoBehaviour {
             Destroy(gameObject);
         }
     }
+
+    public void TakeHealth(int ExtraHealth) {
+        Health += ExtraHealth;
+    }
 }
