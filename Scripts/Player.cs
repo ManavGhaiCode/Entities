@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-    public int _Health = 100;
+    public int _Health = 8;
 
     public float speed = 5f;
     public Transform WeaponPosition;
@@ -16,10 +16,11 @@ public class Player : MonoBehaviour {
     private int WeaponIndex;
 
     private bool CanTakeDamage = true;
-    private int Health = 100;
-    private int Ammo = 30;
+    private int Health = 8;
+    private int Ammo = 3000;
 
     public TextController AmmoText;
+    public HealthBar healthBar;
 
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
@@ -107,9 +108,12 @@ public class Player : MonoBehaviour {
         if (Health <= 0) {
             Destroy(gameObject);
         }
+
+        healthBar.RemoveHealth();
     }
 
     public void TakeHealth(int ExtraHealth) {
         Health += ExtraHealth;
+        healthBar.AddHealth(ExtraHealth);
     }
 }

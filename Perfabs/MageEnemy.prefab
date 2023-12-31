@@ -104,11 +104,15 @@ MonoBehaviour:
   player: {fileID: 0}
   Health: 15
   Damage: 15
+  Drops: []
+  DropChance: 0.4
+  WillDrop: 0
   rb: {fileID: 0}
   anim: {fileID: 0}
+  playerScript: {fileID: 0}
   speed: 4
   StopDistance: 7.5
-  TimeBetweenAttacks: 0.5
+  TimeBetweenAttacks: 0.7
   Gun: {fileID: 7697782620953108709}
 --- !u!50 &821136746465762428
 Rigidbody2D:

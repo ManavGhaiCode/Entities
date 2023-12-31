@@ -187,7 +187,7 @@ MonoBehaviour:
   playerScript: {fileID: 0}
   speed: 5
   StopDistance: 5
-  TimeBetweenAttacks: 0.2
+  TimeBetweenAttacks: 0.5
   Gun: {fileID: 2006578371514583612}
 --- !u!95 &1050930624832118657
 Animator:
