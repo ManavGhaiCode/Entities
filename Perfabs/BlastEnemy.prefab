@@ -261,10 +261,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  Health: 10
-  Damage: 10
+  Health: 3
+  Damage: 1
+  Drops: []
+  DropChance: 0.4
+  WillDrop: 0
   rb: {fileID: 0}
   anim: {fileID: 0}
+  playerScript: {fileID: 0}
   speed: 7
   RotationSpeed: 100
   ExplotionDistance: 5
