@@ -19,6 +19,8 @@ public class Player : MonoBehaviour {
     private int Health = 100;
     private int Ammo = 30;
 
+    public TextController AmmoText;
+
 
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
@@ -84,10 +86,12 @@ public class Player : MonoBehaviour {
 
     public void UseAmmo() {
         Ammo -= 1;
+        AmmoText.SetText(Ammo.ToString());
     }
 
     public void TakeAmmo(int Amount) {
         Ammo += Amount;
+        AmmoText.SetText(Ammo.ToString());
     }
 
     public void TakeDamage(int Damage) {
