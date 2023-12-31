@@ -21,7 +21,6 @@ public class Player : MonoBehaviour {
 
     public TextController AmmoText;
 
-
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -71,6 +70,12 @@ public class Player : MonoBehaviour {
     }
 
     public void TakeWeapon(GameObject WeaponRef) {
+        foreach (GameObject weapon in Guns) {
+            if (weapon == WeaponRef) {
+                return;
+            }
+        }
+
         Array.Resize<GameObject>(ref Guns, Guns.Length + 1);
 
         Guns[Guns.Length - 1] = WeaponRef;
