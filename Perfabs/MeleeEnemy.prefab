@@ -103,9 +103,10 @@ MonoBehaviour:
   player: {fileID: 0}
   Health: 15
   Damage: 1
-  Drops: []
-  DropChance: 0.4
-  WillDrop: 0
+  Drops:
+  - {fileID: 0}
+  DropChance: 0.7
+  WillDrop: 1
   rb: {fileID: 0}
   anim: {fileID: 0}
   playerScript: {fileID: 0}
