@@ -19,6 +19,8 @@ public class Player : MonoBehaviour {
     private int Health = 8;
     private int Ammo = 3000;
 
+    private CameraController camera;
+
     public TextController AmmoText;
     public HealthBar healthBar;
 
@@ -29,6 +31,8 @@ public class Player : MonoBehaviour {
         Health = _Health;
         Guns = new GameObject[0];
         WeaponIndex = -1;
+
+        camera = GameObject.FindWithTag("Camera").GetComponent<CameraController>();
     }
 
     private void Update() {
@@ -104,6 +108,7 @@ public class Player : MonoBehaviour {
         if (!CanTakeDamage) return;
 
         Health -= Damage;
+        camera.Shake(2);
 
         if (Health <= 0) {
             Destroy(gameObject);

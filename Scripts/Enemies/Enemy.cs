@@ -20,6 +20,8 @@ public class Enemy : MonoBehaviour {
     [HideInInspector]
     public Player playerScript;
 
+    private CameraController camera;
+
     public float speed = 5f;
 
     public float RandomRange(float minimum, float maximum) {
@@ -32,6 +34,8 @@ public class Enemy : MonoBehaviour {
         playerScript = GameObject.FindWithTag("Player").GetComponent<Player>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
+        camera = GameObject.FindWithTag("Camera").GetComponent<CameraController>();
     }
 
     public void TakeDamage(int Damage) {
@@ -51,6 +55,7 @@ public class Enemy : MonoBehaviour {
             }
         }
 
+        camera.Shake(1);
         Destroy(gameObject);
     }
 }

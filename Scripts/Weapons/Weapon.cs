@@ -19,6 +19,7 @@ public class Weapon : MonoBehaviour {
 
     private GameObject player;
     private Player playerScript;
+    private CameraController camera;
 
     private float RandomRange(float minimum, float maximum) {
         System.Random rand = new System.Random();
@@ -29,8 +30,9 @@ public class Weapon : MonoBehaviour {
         _TimeBetweenShots = TimeBetweenShots;
         TimeToShoot = Time.time + _TimeBetweenShots;
 
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<Player>();
+        camera = GameObject.FindWithTag("Camera").GetComponent<CameraController>();
     }
 
     private void Update() {
@@ -45,6 +47,7 @@ public class Weapon : MonoBehaviour {
             playerScript.UseAmmo();
             player.GetComponent<Animator>().SetBool("Shooting", true);
 
+            camera.Shake(0);
         } else {
             player.GetComponent<Animator>().SetBool("Shooting", false);
         }
