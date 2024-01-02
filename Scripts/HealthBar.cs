@@ -17,8 +17,8 @@ public class HealthBar : MonoBehaviour {
         image.sprite = Sprites[CurrentSprite];
     }
 
-    public void RemoveHealth() {
-        CurrentSprite += 1;
+    public void RemoveHealth(int Amount) {
+        CurrentSprite += Amount;
 
         if (CurrentSprite == Sprites.Length) {
             CurrentSprite = 0;

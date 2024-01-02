@@ -114,7 +114,7 @@ public class Player : MonoBehaviour {
             Destroy(gameObject);
         }
 
-        healthBar.RemoveHealth();
+        healthBar.RemoveHealth(Damage);
     }
 
     public void TakeHealth(int ExtraHealth) {

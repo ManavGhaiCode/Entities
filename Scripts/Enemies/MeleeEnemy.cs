@@ -30,7 +30,7 @@ public class MeleeEnemy : Enemy {
         rb.angularVelocity = 0;
     }
 
-    IEnumerator Attack() {
+    private IEnumerator Attack() {
         player.GetComponent<Player>().TakeDamage(1);
 
         Vector2 originalPosition = transform.position;
