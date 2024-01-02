@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
@@ -90,6 +91,12 @@ public class Player : MonoBehaviour {
         }
     }
 
+    private IEnumerator SetResetTakeDamage() {
+        CanTakeDamage = false;
+        yield return new WaitForSeconds (1f);
+        CanTakeDamage = true;
+    }
+
     public int GetAmmo() {
         return Ammo;
     }
@@ -110,11 +117,14 @@ public class Player : MonoBehaviour {
         Health -= Damage;
         camera.Shake(2);
 
+        StartCoroutine(SetResetTakeDamage());
+
         if (Health <= 0) {
             Destroy(gameObject);
         }
 
         healthBar.RemoveHealth(Damage);
+        Debug.Log(Health);
     }
 
     public void TakeHealth(int ExtraHealth) {

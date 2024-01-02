@@ -74,7 +74,7 @@ public class Boss : Enemy {
         Player playerScript = hitInfo.GetComponent<Player>();
 
         if (playerScript != null) {
-            playerScript.TakeDamage(1);
+            playerScript.TakeDamage(Damage);
         }
     }
 }

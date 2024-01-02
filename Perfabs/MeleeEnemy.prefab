@@ -105,6 +105,7 @@ MonoBehaviour:
   Damage: 1
   Drops:
   - {fileID: 8936816556146595362, guid: 67f881d83be6306378781f155a051997, type: 3}
+  - {fileID: 1602083548310765638, guid: 48ddb56713be890b28684c358f50fa55, type: 3}
   DropChance: 0.7
   WillDrop: 1
   rb: {fileID: 0}
