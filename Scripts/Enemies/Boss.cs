@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -8,20 +9,28 @@ public class Boss : Enemy {
     public float bulletSpeed;
     public Transform SpawnPoint;
 
+    public Transform WinTxt;
+
     public GameObject[] spawnEnemies;
 
     private float TimeToAttack;
+    private Vector2 MinDist;
 
     private void Start() {
         base.Start();
+        camera.Shake(3);
         TimeToAttack = Time.time + TimeBetweenAttacks;
     }
 
     private void FixedUpdate() {
         if (player == null) { return; }
 
+        if (!(Math.Abs(Vector2.Distance(transform.position, Vector2.zero)) <= .25f)) {
+            rb.MovePosition(Vector2.zero);
+        }
+
         if (TimeToAttack <= Time.time) {
-            int Attack = Random.Range(0, 3);
+            int Attack = UnityEngine.Random.Range(0, 3);
 
             if (Attack == 0) {
                 BulletStorm();
@@ -47,7 +56,7 @@ public class Boss : Enemy {
     }
 
     private void SpawnEnemy() {
-        int EnemyToSpawn = Random.Range(0, spawnEnemies.Length);
+        int EnemyToSpawn = UnityEngine.Random.Range(0, spawnEnemies.Length);
         Instantiate(spawnEnemies[EnemyToSpawn], SpawnPoint.position, SpawnPoint.rotation);
     }
 
@@ -76,5 +85,12 @@ public class Boss : Enemy {
         if (playerScript != null) {
             playerScript.TakeDamage(Damage);
         }
+    }
+
+    public override void Die() {
+        base.Die();
+        camera.Shake(3);
+
+        WinTxt.position = Vector2.zero;
     }
 }

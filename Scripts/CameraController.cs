@@ -35,7 +35,9 @@ public class CameraController : MonoBehaviour {
 
     private IEnumerator SlowTime(float time) {
         Time.timeScale = 0;
+        AudioListener.pause = true;
         yield return new WaitForSecondsRealtime (time);
         Time.timeScale = 1;
+        AudioListener.pause = false;
     }
 }

@@ -20,6 +20,7 @@ public class Weapon : MonoBehaviour {
     private GameObject player;
     private Player playerScript;
     private CameraController camera;
+    private AudioManager AudioMan;
 
     private float RandomRange(float minimum, float maximum) {
         System.Random rand = new System.Random();
@@ -33,6 +34,7 @@ public class Weapon : MonoBehaviour {
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<Player>();
         camera = GameObject.FindWithTag("Camera").GetComponent<CameraController>();
+        AudioMan = GameObject.FindWithTag("Main").GetComponent<AudioManager>();
     }
 
     private void Update() {
@@ -48,6 +50,7 @@ public class Weapon : MonoBehaviour {
             player.GetComponent<Animator>().SetBool("Shooting", true);
 
             camera.Shake(0);
+            AudioMan.Play("Bullet");
         } else {
             player.GetComponent<Animator>().SetBool("Shooting", false);
         }

@@ -15,5 +15,6 @@ public class EnemyGun : MonoBehaviour {
         bulletScript.lifespan = BulletLifespan;
 
         bullet.GetComponent<Rigidbody2D>().AddForce(FirePoint.up * bulletSpeed, ForceMode2D.Impulse);
+        GameObject.FindWithTag("Main").GetComponent<AudioManager>().Play("Bullet");
     }
 }

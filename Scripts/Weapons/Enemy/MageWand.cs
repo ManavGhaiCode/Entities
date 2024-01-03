@@ -12,5 +12,7 @@ public class MageWand : EnemyGun {
 
             bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
         }
+
+        GameObject.FindWithTag("Main").GetComponent<AudioManager>().Play("Bullet");
     }
 }

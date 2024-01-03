@@ -18,7 +18,7 @@ public class Player : MonoBehaviour {
 
     private bool CanTakeDamage = true;
     private int Health = 8;
-    private int Ammo = 3000;
+    private int Ammo = 150;
 
     private CameraController camera;
 
@@ -129,6 +129,13 @@ public class Player : MonoBehaviour {
 
     public void TakeHealth(int ExtraHealth) {
         Health += ExtraHealth;
-        healthBar.AddHealth(ExtraHealth);
+        int ExtraExtraHealth = 0;
+
+        if (Health == _Health) {
+            ExtraExtraHealth = 8 - (Health - ExtraHealth);
+            Health = 8;
+        }
+
+        healthBar.AddHealth(ExtraHealth - ExtraExtraHealth);
     }
 }

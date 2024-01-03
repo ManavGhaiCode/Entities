@@ -20,7 +20,8 @@ public class Enemy : MonoBehaviour {
     [HideInInspector]
     public Player playerScript;
 
-    private CameraController camera;
+    protected CameraController camera;
+    protected AudioManager AudioMan;
 
     public float speed = 5f;
 
@@ -36,6 +37,7 @@ public class Enemy : MonoBehaviour {
         anim = GetComponent<Animator>();
 
         camera = GameObject.FindWithTag("Camera").GetComponent<CameraController>();
+        AudioMan = GameObject.FindWithTag("Main").GetComponent<AudioManager>();
     }
 
     public void TakeDamage(int Damage) {
@@ -47,7 +49,7 @@ public class Enemy : MonoBehaviour {
         }
     }
 
-    public void Die() {
+    public virtual void Die() {
         if (WillDrop) {
             if (RandomRange(0, 1) < DropChance) {
                 int DropIndex = UnityEngine.Random.Range(0, Drops.Length);
@@ -56,6 +58,8 @@ public class Enemy : MonoBehaviour {
         }
 
         camera.Shake(1);
+
+        AudioMan.Play("EnemyDeath");
         Destroy(gameObject);
     }
 }
